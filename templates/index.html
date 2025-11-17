@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 class="mb-4">Enter Your Information</h3>
+
+<form action="/predict" method="POST" class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Age</label>
+        <input type="number" class="form-control" name="age" required>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Education Level</label>
+        <select class="form-select" name="education" required>
+            <option value="">choose a value</option>
+            <option value="High School">High School</option>
+            <option value="Associate">Associate</option>
+            <option value="Bachelor">Bachelor</option>
+            <option value="Master">Master</option>
+            <option value="Doctorate">Doctorate</option>
+        </select>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Job Title</label>
+        <select class="form-select" name="job_title" required>
+            <option value="">choose a value</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Manager">Manager</option>
+        </select>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Years of Experience</label>
+        <input type="number" class="form-control" name="years_experience" required>
+    </div>
+
+    <div class="col-md-12">
+        <label class="form-label">State</label>
+        <select class="form-select" name="state" required>
+            <option value="">choose a value</option>
+            <option value="CA">CA</option>
+            <option value="NY">NY</option>
+            <option value="TX">TX</option>
+            <option value="FL">FL</option>
+            <option value="IL">IL</option>
+        </select>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-primary w-100" type="submit">Predict Salary</button>
+    </div>
+</form>
+
+{% if prediction %}
+<div class="alert alert-info mt-4">
+    <h5>Predicted Salary: ${{ prediction }}</h5>
+</div>
+{% endif %}
+{% endblock %}
